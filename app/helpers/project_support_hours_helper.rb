@@ -42,8 +42,8 @@ module ProjectSupportHoursHelper
                         total_support_hours(project),
                         total_hours_used(project),
                         total_hours_remaining(project),
-                        format_date(start_date(project)),
-                        format_date(end_date(project)),
+                        start_date(project),
+                        end_date(project),
                         ]
                       
             csv << fields.collect {|c| begin; ic.iconv(c.to_s); rescue; c.to_s; end }

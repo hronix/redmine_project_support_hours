@@ -28,8 +28,8 @@
 	<td align="center"><%= ProjectSupportHoursHelper.total_support_hours(project) %></td>
 	<td align="center"><%= ProjectSupportHoursHelper.total_hours_used(project) %></td>
 	<td align="center"><%= ProjectSupportHoursHelper.total_hours_remaining(project) %></td>
-	<td align="center"><%= format_date(ProjectSupportHoursHelper.start_date(project)) %></td>
-	<td align="center"><%= format_date(ProjectSupportHoursHelper.end_date(project)) %></td>
+	<td align="center"><%= ProjectSupportHoursHelper.start_date(project) %></td>
+	<td align="center"><%= ProjectSupportHoursHelper.end_date(project) %></td>
   </tr>
 <% end %>
   </tbody>
