@@ -1,0 +1,41 @@
+<h2>Project Support Hours</h2>
+
+<% form_tag({}, :method => :get) do %>
+<fieldset><legend><%= l(:label_filter_plural) %></legend>
+<label><%= l(:field_status) %> :</label>
+<%= select_tag 'status', project_status_options_for_select(@status), :class => "small", :onchange => "this.form.submit(); return false;"  %>
+<label><%= l(:label_project) %>:</label>
+<%= text_field_tag 'name', params[:name], :size => 30 %>
+<%= submit_tag l(:button_apply), :class => "small", :name => nil %>
+</fieldset>
+<% end %>
+&nbsp;
+
+<div class="autoscroll">
+<table class="list">
+  <thead><tr>
+	<th><%=l(:label_project)%></th>
+	<th><%=l(:project_support_hours_total_hours_field_label)%></th>
+	<th><%=l(:label_spent_time)%></th>
+	<th><%=l(:project_support_hours_remaining_hours_field_label)%></th>
+	<th><%=l(:project_support_hours_start_date_field_label)%></th>
+	<th><%=l(:project_support_hours_end_date_field_label)%></th>
+  </tr></thead>
+  <tbody>	
+<% project_tree(@projects) do |project, level| %>
+  <tr class="<%= cycle("odd", "even") %> <%= css_project_classes(project) %> <%= level > 0 ? "idnt idnt-#{level}" : nil %>">
+		<td class="name"><%= project.active? ? link_to(h(project.name), :controller => 'projects', :action => 'settings', :id => project) : h(project.name) %></td>
+	<td align="center"><%= ProjectSupportHoursHelper.total_support_hours(project) %></td>
+	<td align="center"><%= ProjectSupportHoursHelper.total_hours_used(project) %></td>
+	<td align="center"><%= ProjectSupportHoursHelper.total_hours_remaining(project) %></td>
+	<td align="center"><%= format_date(ProjectSupportHoursHelper.start_date(project)) %></td>
+	<td align="center"><%= format_date(ProjectSupportHoursHelper.end_date(project)) %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+</div>
+
+<% other_formats_links do |f| %>
+	<%= f.link_to 'CSV', :url => { :status => @status, :name => params[:name] } %>
+<% end %>

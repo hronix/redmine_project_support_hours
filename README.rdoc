@@ -15,11 +15,13 @@ Project Support Hours is a plugin to implement per-project buckets of hours that
   * Support hours available
   * Project start date
   * Project end date
+* Projects support hours summary
+  * All/active filter
+  * Export to csv
 
 == Getting the plugin
 
-A copy of the plugin can be downloaded from {Little Stream Software}[https://projects.littlestreamsoftware.com/projects/support-hours/files] or from {GitHub}[http://github.com/edavis10//redmine_project_support_hours]
-
+A copy of the plugin can be downloaded from {GitHub}[http://github.com/hronix/redmine_project_support_hours]
 
 == Installation and Setup
 
@@ -38,9 +40,8 @@ Make sure there is no conflicts or other errors before continuing.  You can also
 === Installation
 
 1. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
-2. Run the plugin migrations <tt>rake db:migrate_plugins</tt>
-3. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
-4. Login as an Administrator and configure the Custom Fields for the plugin in: Administration > Plugins > Configure
+2. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
+3. Login as an Administrator and configure the Custom Fields for the plugin in: Administration > Plugins > Configure
 
 == Usage
 
@@ -52,4 +53,4 @@ This plugin is licensed under the GNU GPL v2.  See COPYRIGHT.txt and GPL.txt for
 
 == Project help
 
-If you need help you can contact the maintainer at the Bug Tracker.  The bug tracker is located at  https://projects.littlestreamsoftware.com
+If you need help you can contact the maintainer at the Issues. 
