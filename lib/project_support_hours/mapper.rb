@@ -20,5 +20,20 @@ module ProjectSupportHours
         return ProjectCustomField.find_by_field_format_and_id('date', configuration['end_date_field'].to_i)
       end
     end
+    
+    def self.custom_field
+      configuration = Setting.plugin_redmine_project_support_hours
+      if configuration['custom_field'] 
+        return Setting.plugin_redmine_project_support_hours["custom_field"]
+      end
+    end
+    
+    def self.project_role
+      configuration = Setting.plugin_redmine_project_support_hours
+      if configuration['project_role'] 
+        return Setting.plugin_redmine_project_support_hours["project_role"]
+      end
+    end
+        
   end
 end

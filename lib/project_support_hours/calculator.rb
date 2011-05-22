@@ -25,8 +25,37 @@ module ProjectSupportHours
 
     def self.total_hours_remaining_for(project)
       total_hours = total_support_hours_for(project)
-      if total_hours
+      if total_hours and total_hours > 0
         total_hours - total_hours_used_for(project)
+      else
+        nil
+      end
+    end
+    
+    def self.custom_field_for(project)
+      CustomValue.find(:first, :conditions => ["custom_field_id = ? AND customized_id = ?", ProjectSupportHours::Mapper.custom_field, project.id]).to_s
+    end
+    
+    def self.custom_field_name_for
+      custom_field = ProjectSupportHours::Mapper.custom_field.to_i
+      if custom_field != 0
+        ProjectCustomField.find(ProjectSupportHours::Mapper.custom_field.to_i).name.to_s
+      else
+        nil
+      end
+    end
+    
+    def self.project_role_for(project)
+      member = Member.find(:first, :include => ["member_roles"], :conditions => ["member_roles.role_id = ? AND project_id = ?", ProjectSupportHours::Mapper.project_role, project.id])
+      first_name = member ? User.find(member.user_id).firstname.to_s : ""
+      last_name = member ? User.find(member.user_id).lastname.to_s : ""
+      first_name + " " + last_name
+    end
+    
+    def self.project_role_name_for
+      project_role = ProjectSupportHours::Mapper.project_role.to_i
+      if project_role != 0
+        Role.find(ProjectSupportHours::Mapper.project_role.to_i).name.to_s
       else
         nil
       end

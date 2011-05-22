@@ -22,6 +22,22 @@ module ProjectSupportHoursHelper
     ProjectSupportHours::Calculator.end_date_for(project)
   end
   
+  def self.custom_field(project)
+    ProjectSupportHours::Calculator.custom_field_for(project)
+  end
+
+  def self.custom_field_name
+    ProjectSupportHours::Calculator.custom_field_name_for
+  end
+  
+  def self.project_role(project)
+    ProjectSupportHours::Calculator.project_role_for(project)
+  end
+  
+  def self.project_role_name
+    ProjectSupportHours::Calculator.project_role_name_for
+  end
+  
   def self.projects_to_csv(projects)
       ic = Iconv.new(l(:general_csv_encoding), 'UTF-8')    
       decimal_separator = l(:general_csv_decimal_separator)
@@ -33,6 +49,8 @@ module ProjectSupportHoursHelper
                      l(:project_support_hours_remaining_hours_field_label),
                      l(:project_support_hours_start_date_field_label),
                      l(:project_support_hours_end_date_field_label),
+                     custom_field_name,
+                     project_role_name,
                      ]
           
           csv << headers.collect {|c| begin; ic.iconv(c.to_s); rescue; c.to_s; end }
@@ -44,6 +62,8 @@ module ProjectSupportHoursHelper
                         total_hours_remaining(project),
                         start_date(project),
                         end_date(project),
+                        custom_field(project),
+                        project_role(project),
                         ]
                       
             csv << fields.collect {|c| begin; ic.iconv(c.to_s); rescue; c.to_s; end }
