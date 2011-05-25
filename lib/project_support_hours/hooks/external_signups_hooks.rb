@@ -23,6 +23,7 @@ module ProjectSupportHours
           set_custom_value_on_project(context[:project], configuration['hours_field'], params[:support][:hours].to_f)
           set_custom_value_on_project(context[:project], configuration['start_date_field'], params[:support][:start_date])
           set_custom_value_on_project(context[:project], configuration['end_date_field'], params[:support][:end_date])
+          set_custom_value_on_project(context[:project], configuration['field_list_field'], params[:support][:field_list])
         end
       end
 

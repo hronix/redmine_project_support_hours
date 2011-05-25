@@ -21,17 +21,17 @@ module ProjectSupportHours
       end
     end
     
-    def self.custom_field
+    def self.field_list
       configuration = Setting.plugin_redmine_project_support_hours
-      if configuration['custom_field'] 
-        return Setting.plugin_redmine_project_support_hours["custom_field"]
+      if configuration['field_list_field'] 
+        return Setting.plugin_redmine_project_support_hours["field_list_field"]
       end
     end
     
     def self.project_role
       configuration = Setting.plugin_redmine_project_support_hours
-      if configuration['project_role'] 
-        return Setting.plugin_redmine_project_support_hours["project_role"]
+      if configuration['project_role_field'] 
+        return Setting.plugin_redmine_project_support_hours["project_role_field"]
       end
     end
         

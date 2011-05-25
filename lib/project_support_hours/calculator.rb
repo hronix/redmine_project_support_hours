@@ -19,8 +19,12 @@ module ProjectSupportHours
     end
 
     def self.total_hours_used_for(project)
-      project.time_entries.sum('hours', :conditions => ["activity_id NOT IN (?)",
+      if Setting.plugin_redmine_project_support_hours['excluded_activities'].blank?
+        project.time_entries.sum('hours')
+      else
+        project.time_entries.sum('hours', :conditions => ["activity_id NOT IN (?)",
                                                         Setting.plugin_redmine_project_support_hours['excluded_activities']])
+      end                                                
     end
 
     def self.total_hours_remaining_for(project)
@@ -32,14 +36,14 @@ module ProjectSupportHours
       end
     end
     
-    def self.custom_field_for(project)
-      CustomValue.find(:first, :conditions => ["custom_field_id = ? AND customized_id = ?", ProjectSupportHours::Mapper.custom_field, project.id]).to_s
+    def self.field_list_for(project)
+      CustomValue.find(:first, :conditions => ["custom_field_id = ? AND customized_id = ?", ProjectSupportHours::Mapper.field_list, project.id]).to_s
     end
     
-    def self.custom_field_name_for
-      custom_field = ProjectSupportHours::Mapper.custom_field.to_i
-      if custom_field != 0
-        ProjectCustomField.find(ProjectSupportHours::Mapper.custom_field.to_i).name.to_s
+    def self.field_list_name_for
+      field_list_field = ProjectSupportHours::Mapper.field_list.to_i
+      if field_list_field != 0
+        ProjectCustomField.find(ProjectSupportHours::Mapper.field_list.to_i).name.to_s
       else
         nil
       end

@@ -22,12 +22,12 @@ module ProjectSupportHoursHelper
     ProjectSupportHours::Calculator.end_date_for(project)
   end
   
-  def self.custom_field(project)
-    ProjectSupportHours::Calculator.custom_field_for(project)
+  def self.field_list(project)
+    ProjectSupportHours::Calculator.field_list_for(project)
   end
-
-  def self.custom_field_name
-    ProjectSupportHours::Calculator.custom_field_name_for
+  
+  def self.field_list_name
+    ProjectSupportHours::Calculator.field_list_name_for
   end
   
   def self.project_role(project)
@@ -49,7 +49,7 @@ module ProjectSupportHoursHelper
                      l(:project_support_hours_remaining_hours_field_label),
                      l(:project_support_hours_start_date_field_label),
                      l(:project_support_hours_end_date_field_label),
-                     custom_field_name,
+                     field_list_name,
                      project_role_name,
                      ]
           
@@ -62,7 +62,7 @@ module ProjectSupportHoursHelper
                         total_hours_remaining(project),
                         start_date(project),
                         end_date(project),
-                        custom_field(project),
+                        field_list(project),
                         project_role(project),
                         ]
                       

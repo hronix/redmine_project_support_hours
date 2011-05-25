@@ -27,6 +27,7 @@ def project_role_config(option_name, current_value)
   return content_tag(:p, label + select)
 	
 end
+
 %>
 
 <fieldset>
@@ -40,8 +41,8 @@ end
 
   <%= content_tag(:p, l(:project_support_hours_settings_report_help)) %>
 
-  <%= custom_field_config('custom_field', 'list', @settings['custom_field'].to_i) %>
-  <%= project_role_config('project_role', @settings['project_role'].to_i) %>
+  <%= custom_field_config('field_list_field', 'list', @settings['field_list_field'].to_i) %>
+  <%= project_role_config('project_role_field', @settings['project_role_field'].to_i) %> 
 
   <%= content_tag(:p, l(:project_support_hours_settings_activity_help)) %>
 

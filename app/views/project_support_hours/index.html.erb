@@ -20,7 +20,7 @@
 	<th><%=l(:project_support_hours_remaining_hours_field_label)%></th>
 	<th><%=l(:project_support_hours_start_date_field_label)%></th>
 	<th><%=l(:project_support_hours_end_date_field_label)%></th>
-	<th><%=ProjectSupportHoursHelper.custom_field_name%></th>
+ 	<th><%=ProjectSupportHoursHelper.field_list_name%></th> 
 	<th><%=ProjectSupportHoursHelper.project_role_name%></th>
   </tr></thead>
   <tbody>	
@@ -32,7 +32,7 @@
 	<td align="center"><%= ProjectSupportHoursHelper.total_hours_remaining(project) %></td>
 	<td align="center"><%= ProjectSupportHoursHelper.start_date(project) %></td>
 	<td align="center"><%= ProjectSupportHoursHelper.end_date(project) %></td>
-	<td align="center"><%= ProjectSupportHoursHelper.custom_field(project) %></td>
+  <td align="center"><%= ProjectSupportHoursHelper.field_list(project) %></td> 
 	<td align="center"><%= ProjectSupportHoursHelper.project_role(project) %></td>
   </tr>
 <% end %>
