@@ -17,13 +17,13 @@ def project_role_config(option_name, current_value)
 	label = content_tag(:label, l("project_support_hours_#{option_name}_label".to_sym))
   data = Role.all
   unless data.empty?
-    select = select_tag("settings[#{option_name}]",
+    select = select_tag("settings[#{option_name}]", 
                         content_tag(:option, '') +
                         options_from_collection_for_select(data, :id, :name, current_value))
   else
-    select = link_to(l(:project_support_hours_missing_custom_field, :field_format => field_format.capitalize),
-                     :controller => 'custom_fields', :action => 'index', :tab => 'ProjectCustomField')
-  end
+		select = link_to(l(:project_support_hours_missing_role_field),
+	                   :controller => 'roles', :action => 'index')
+  end  
   return content_tag(:p, label + select)
 	
 end

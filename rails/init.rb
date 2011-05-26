@@ -16,7 +16,7 @@ Redmine::Plugin.register :redmine_project_support_hours do
   url 'http://github.com/hronix/redmine_project_support_hours'
   author_url 'http://github.com/hronix'
   description 'Project Support Hours is a plugin to implement per-project buckets of hours that are used for support.'
-  version '0.1.4'
+  version '0.1.5'
 
   requires_redmine :version_or_higher => '0.8.0'
 
